@@ -23,11 +23,13 @@ module.exports = async (req, res) => {
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
+    const senderEmail = process.env.SENDER_EMAIL || 'onboarding@resend.dev';
+    const recipientEmail = process.env.CONTACT_EMAIL;
 
     // Send email to yourself
     const sendResponse = await resend.emails.send({
-      from: 'contact@justinildefonso.com',
-      to: process.env.CONTACT_EMAIL,
+      from: senderEmail,
+      to: recipientEmail,
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -36,7 +38,6 @@ module.exports = async (req, res) => {
         <p><strong>Message:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
       `,
-      replyTo: email,
     });
 
     if (sendResponse.error) {
@@ -46,7 +47,7 @@ module.exports = async (req, res) => {
 
     // Optionally send confirmation email to the user
     await resend.emails.send({
-      from: 'contact@justinildefonso.com',
+      from: senderEmail,
       to: email,
       subject: 'We received your message',
       html: `

@@ -14,30 +14,21 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const model = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
-    const isChatModel = model.startsWith('chat-');
-    const method = isChatModel ? 'generateMessage' : 'generateText';
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${encodeURIComponent(
+      process.env.GEMINI_API_KEY
+    )}`;
 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1/models/${encodeURIComponent(
-      model
-    )}:${method}?key=${encodeURIComponent(process.env.GEMINI_API_KEY)}`;
-
-    const requestBody = isChatModel
-      ? {
-          messages: [
+    const requestBody = {
+      contents: [
+        {
+          parts: [
             {
-              author: 'user',
-              content: [{ text: message }],
+              text: message,
             },
           ],
-          temperature: 0.75,
-          maxOutputTokens: 256,
-        }
-      : {
-          prompt: { text: message },
-          temperature: 0.75,
-          maxOutputTokens: 256,
-        };
+        },
+      ],
+    };
 
     const apiResponse = await fetch(apiUrl, {
       method: 'POST',
@@ -64,14 +55,8 @@ module.exports = async (req, res) => {
       return res.status(500).json({ error: errorMessage });
     }
 
-    const reply =
-      result.output?.trim() ||
-      result?.candidates?.[0]?.output?.trim() ||
-      result?.candidates?.[0]?.content?.[0]?.text?.trim() ||
-      result?.candidates?.[0]?.content?.text?.trim() ||
-      result?.candidates?.[0]?.text?.trim() ||
-      result?.reply?.trim() ||
-      null;
+    const candidate = result?.candidates?.[0];
+    const reply = candidate?.content?.parts?.[0]?.text || null;
 
     if (!reply) {
       console.error('Gemini API returned no reply', result);

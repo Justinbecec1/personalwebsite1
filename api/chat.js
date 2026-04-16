@@ -14,9 +14,9 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Using gemini-2-flash which is stable and widely available
-    // Fallback options: gemini-3-flash, gemini-1.5-flash, gemini-pro
-    const model = process.env.GEMINI_MODEL || 'gemini-2-flash';
+    // Using gemini-1.5-flash which is widely supported
+    // If not available, try setting GEMINI_MODEL to: gemini-pro, text-bison-001, or chat-bison-001
+    const model = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
     
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(
       process.env.GEMINI_API_KEY

@@ -47,7 +47,15 @@ module.exports = async (req, res) => {
       body: JSON.stringify(requestBody),
     });
 
-    const result = await apiResponse.json();
+    let result;
+    try {
+      result = await apiResponse.json();
+    } catch (parseError) {
+      const responseText = await apiResponse.text();
+      console.error('Failed to parse Gemini API response:', parseError);
+      console.error('Response text:', responseText);
+      return res.status(500).json({ error: 'Invalid response from Gemini API' });
+    }
 
     if (!apiResponse.ok) {
       console.error('Gemini API responded with status', apiResponse.status, result);
@@ -60,6 +68,7 @@ module.exports = async (req, res) => {
       result?.candidates?.[0]?.output?.trim() ||
       result?.candidates?.[0]?.content?.[0]?.text?.trim() ||
       result?.candidates?.[0]?.content?.text?.trim() ||
+      result?.candidates?.[0]?.text?.trim() ||
       result?.reply?.trim() ||
       null;
 

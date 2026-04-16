@@ -47,11 +47,12 @@ module.exports = async (req, res) => {
       body: JSON.stringify(requestBody),
     });
 
+    const responseText = await apiResponse.text();
     let result;
+
     try {
-      result = await apiResponse.json();
+      result = responseText ? JSON.parse(responseText) : {};
     } catch (parseError) {
-      const responseText = await apiResponse.text();
       console.error('Failed to parse Gemini API response:', parseError);
       console.error('Response text:', responseText);
       return res.status(500).json({ error: 'Invalid response from Gemini API' });

@@ -1,6 +1,6 @@
-import { GoogleGenAI } from "@google/genai";
+const { GoogleGenAI } = require("@google/genai");
 
-export default async (req, res) => {
+module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -25,14 +25,14 @@ export default async (req, res) => {
       contents: message,
     });
 
-    const reply = response.text?.trim();
+    const reply = response.text;
 
-    if (!reply) {
-      console.error('Gemini API returned no reply', response);
+    if (!reply || reply.trim().length === 0) {
+      console.error('Gemini API returned empty reply', response);
       return res.status(500).json({ error: 'No reply from Gemini API' });
     }
 
-    res.status(200).json({ reply });
+    res.status(200).json({ reply: reply.trim() });
   } catch (error) {
     console.error('Gemini error:', error);
     const errorMessage = error.message || 'Internal server error';

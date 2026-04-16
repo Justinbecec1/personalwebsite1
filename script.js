@@ -61,3 +61,46 @@ chatInput.addEventListener('keypress', (e) => {
     sendMessage();
   }
 });
+
+// Contact form submission
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill out all fields');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Show success message
+        document.getElementById('formSuccess').classList.add('show');
+        contactForm.reset();
+        setTimeout(() => {
+          document.getElementById('formSuccess').classList.remove('show');
+        }, 4000);
+      } else {
+        alert('Error sending message: ' + (data.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      alert('Error sending message. Please try again.');
+    }
+  });
+}

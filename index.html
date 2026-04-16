@@ -136,7 +136,7 @@
       <p class="section-label">04 — Contact</p>
       <h2 class="section-title">Get In Touch</h2>
       <p class="contact-sub">Have a project in mind or just want to say hi? My inbox is always open.</p>
-      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <form class="contact-form" id="contactForm">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
@@ -202,16 +202,6 @@
       el.classList.add('reveal');
       observer.observe(el);
     });
-
-   
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('formSuccess').classList.add('show');
-      e.target.reset();
-      setTimeout(() => {
-        document.getElementById('formSuccess').classList.remove('show');
-      }, 4000);
-    }
   </script>
 
 </body>

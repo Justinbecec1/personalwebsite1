@@ -45,7 +45,8 @@ async function sendMessage() {
     if (response.ok) {
       appendMessage('bot', data.reply);
     } else {
-      appendMessage('bot', 'Sorry, something went wrong. Please try again.');
+      const errorMessage = data.error || 'Sorry, something went wrong. Please try again.';
+      appendMessage('bot', errorMessage);
     }
   } catch (error) {
     // Remove typing indicator

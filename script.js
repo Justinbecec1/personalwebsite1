@@ -3,8 +3,8 @@ const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
 const chatSend = document.getElementById('chat-send');
 
-// Replace with your Railway backend URL (e.g., https://your-app.railway.app/chat)
-const BACKEND_URL = 'https://your-railway-app-url/chat';
+// Vercel backend endpoint
+const BACKEND_URL = '/api/chat';
 
 function appendMessage(sender, text) {
   const messageDiv = document.createElement('div');

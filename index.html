@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Justin Ildefonso — Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+ 
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">JI</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#chatbot">Chatbot</a></li>
+    </ul>
+  </nav>
+
+ 
+  <section id="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Full Stack Web Developer</p>
+      <h1 class="hero-name">Justin<br/><span>Ildefonso</span></h1>
+      <p class="hero-sub">21 years old · Orlando, FL · Turning ideas into real, working products.</p>
+      <a href="#contact" class="hero-cta">Get in touch</a>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-placeholder"><img src="assets/justin.png" alt="picture of me"/></div>
+    </div>
+  </section>
+
+  
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">01 — About</p>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="about-grid">
+        <div class="about-body">
+          <p>I'm a 21-year-old full stack web developer based in Orlando, Florida. I got into web development because I love the idea of turning ideas into real, working products that people can actually use.</p>
+          <p>Right now, I'm in school studying Digital Media and plan to graduate in May 2026. While I'm still a student, I spend a lot of my time building projects, learning new technologies, and improving my skills both on the front end and back end.</p>
+          <p>I enjoy creating websites and applications that not only look good but feel smooth and easy to use. Whether I'm working on design, functionality, or performance, I'm always focused on making things better and more efficient.</p>
+          <p>I'm still early in my journey, but I'm serious about growing as a developer and building things that matter.</p>
+        </div>
+        <div class="about-aside">
+          <div class="aside-card">
+            <span class="aside-num">2026</span>
+            <span class="aside-desc">Expected Graduation</span>
+          </div>
+          <div class="aside-card">
+            <span class="aside-num">Full</span>
+            <span class="aside-desc">Stack Developer</span>
+          </div>
+          <div class="aside-card">
+            <span class="aside-num">Orlando</span>
+            <span class="aside-desc">Florida, USA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">02 — Experience</p>
+      <h2 class="section-title">Where I've Worked</h2>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">UX/UI Engineer <span class="exp-tag">Contract</span></h3>
+            <p class="exp-company">Local Grown Salads — Toronto, Ontario</p>
+          </div>
+          <p class="exp-date">Apr 2025 – Aug 2025</p>
+        </div>
+        <ul class="exp-list">
+          <li>Designed wireframes and high-fidelity UI screens to support new product features and launches.</li>
+          <li>Collaborated closely with developers to build responsive front-end components using HTML, CSS, and JavaScript.</li>
+          <li>Enhanced user flows and improved visual consistency across multiple pages through refined layouts and interface design.</li>
+          <li>Participated in usability testing and incorporated feedback to optimize overall user experience.</li>
+          <li>Applied accessibility best practices to ensure inclusive and user-friendly design.</li>
+          <li>Utilized Git for version control, including branch management and pull requests for efficient team collaboration.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label">03 — Skills</p>
+      <h2 class="section-title">What I Work With</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>HTML</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>CSS</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>JavaScript</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>Node.js</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>PHP</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>MySQL</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>Supabase</span>
+        </div>
+        <div class="skill-item">
+          <span class="skill-dot"></span>
+          <span>Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact">
+    <div class="section-inner contact-inner">
+      <p class="section-label">04 — Contact</p>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-sub">Have a project in mind or just want to say hi? My inbox is always open.</p>
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="form-btn">Send Message</button>
+        <p class="form-success" id="formSuccess">Thanks! I'll get back to you soon.</p>
+      </form>
+    </div>
+  </section>
+
+
+  <section id="chatbot">
+    <div class="section-inner">
+      <p class="section-label">05 — Chatbot</p>
+      <h2 class="section-title">Ask Me Anything</h2>
+      <p class="chatbot-sub">Have a question about my work or just want to chat? Try out my AI assistant!</p>
+      <div class="chat-container">
+        <div id="chat-messages" class="chat-messages"></div>
+        <div class="chat-input-container">
+          <input type="text" id="chat-input" placeholder="Type your message..." />
+          <button id="chat-send" class="chat-send-btn">Send</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>© 2025 Justin Ildefonso</p>
+    <p class="footer-muted">Built with HTML, CSS & JS</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+  
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.section-inner, .exp-card, .skill-item, .aside-card').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+
+   
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').classList.add('show');
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('formSuccess').classList.remove('show');
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>

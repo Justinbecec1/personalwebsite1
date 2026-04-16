@@ -14,29 +14,37 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(
-      process.env.GEMINI_API_KEY
-    )}`;
+    const model = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
+    const isChatModel = model.startsWith('chat-');
+    const method = isChatModel ? 'generateMessage' : 'generateText';
+
+    const apiUrl = `https://generativelanguage.googleapis.com/v1/models/${encodeURIComponent(
+      model
+    )}:${method}?key=${encodeURIComponent(process.env.GEMINI_API_KEY)}`;
+
+    const requestBody = isChatModel
+      ? {
+          messages: [
+            {
+              author: 'user',
+              content: [{ text: message }],
+            },
+          ],
+          temperature: 0.75,
+          maxOutputTokens: 256,
+        }
+      : {
+          prompt: { text: message },
+          temperature: 0.75,
+          maxOutputTokens: 256,
+        };
+
     const apiResponse = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: message,
-              },
-            ],
-          },
-        ],
-        generationConfig: {
-          maxOutputTokens: 256,
-          temperature: 0.75,
-        },
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     const result = await apiResponse.json();
@@ -47,11 +55,12 @@ module.exports = async (req, res) => {
       return res.status(500).json({ error: errorMessage });
     }
 
-    const candidate = result?.candidates?.[0];
     const reply =
-      candidate?.content?.parts?.[0]?.text ||
-      candidate?.content?.text ||
-      candidate?.text ||
+      result.output?.trim() ||
+      result?.candidates?.[0]?.output?.trim() ||
+      result?.candidates?.[0]?.content?.[0]?.text?.trim() ||
+      result?.candidates?.[0]?.content?.text?.trim() ||
+      result?.reply?.trim() ||
       null;
 
     if (!reply) {

@@ -14,7 +14,11 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${encodeURIComponent(
+    // Using gemini-2-flash which is stable and widely available
+    // Fallback options: gemini-3-flash, gemini-1.5-flash, gemini-pro
+    const model = process.env.GEMINI_MODEL || 'gemini-2-flash';
+    
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(
       process.env.GEMINI_API_KEY
     )}`;
 

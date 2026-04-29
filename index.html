@@ -14,6 +14,7 @@
     <a href="#hero" class="nav-logo">JI</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -65,9 +66,38 @@
   </section>
 
 
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">02 — Projects</p>
+      <h2 class="section-title">Things I've Built</h2>
+      <div class="projects-grid">
+
+        <!-- Copy this card block for each project you add -->
+        <a href="projects/project-template.html" class="project-card">
+          <div class="project-card-img">
+            <!-- Replace with: <img src="../assets/your-image.png" alt="Project Name" /> -->
+            <span class="project-card-img-label">Project Screenshot</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Project Title</h3>
+            <p class="project-card-desc">A short one or two sentence description of what this project does and who it's for.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <span class="project-card-cta">View Project →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
   <section id="experience">
     <div class="section-inner">
-      <p class="section-label">02 — Experience</p>
+      <p class="section-label">03 — Experience</p>
       <h2 class="section-title">Where I've Worked</h2>
       <div class="exp-card">
         <div class="exp-header">
@@ -91,7 +121,7 @@
 
   <section id="skills">
     <div class="section-inner">
-      <p class="section-label">03 — Skills</p>
+      <p class="section-label">04 — Skills</p>
       <h2 class="section-title">What I Work With</h2>
       <div class="skills-grid">
         <div class="skill-item">
@@ -133,7 +163,7 @@
 
   <section id="contact">
     <div class="section-inner contact-inner">
-      <p class="section-label">04 — Contact</p>
+      <p class="section-label">05 — Contact</p>
       <h2 class="section-title">Get In Touch</h2>
       <p class="contact-sub">Have a project in mind or just want to say hi? My inbox is always open.</p>
       <form class="contact-form" id="contactForm">
@@ -160,7 +190,7 @@
 
   <section id="chatbot">
     <div class="section-inner">
-      <p class="section-label">05 — Chatbot</p>
+      <p class="section-label">06 — Chatbot</p>
       <h2 class="section-title">Ask Me Anything</h2>
       <p class="chatbot-sub">Have a question about my work or just want to chat? Try out my AI assistant!</p>
       <div class="chat-container">
@@ -198,7 +228,7 @@
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll('.section-inner, .exp-card, .skill-item, .aside-card').forEach(el => {
+    document.querySelectorAll('.section-inner, .exp-card, .skill-item, .aside-card, .project-card').forEach(el => {
       el.classList.add('reveal');
       observer.observe(el);
     });

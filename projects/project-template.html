@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Title — Justin Ildefonso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    /* Project detail page overrides */
+    .project-detail-hero {
+      min-height: auto;
+      padding-top: 10rem;
+      padding-bottom: 0;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-detail-hero .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      margin-bottom: 2.5rem;
+    }
+
+    .project-detail-hero .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-detail-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-detail-hero .project-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-screenshots {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .project-screenshots.two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .screenshot-slot {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 60%, #1a1a1a 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .screenshot-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .screenshot-slot-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .project-body p {
+      color: #b0a89e;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .aside-block {
+      border-top: 1px solid var(--border);
+      padding-top: 1.4rem;
+    }
+
+    .aside-block-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .tech-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tech-list li {
+      font-size: 0.92rem;
+      color: var(--text);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .tech-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .retro-section {
+      border-top: 1px solid var(--border);
+    }
+
+    .retro-section .retro-body p {
+      color: #b0a89e;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .retro-section .retro-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+      .project-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .project-screenshots.two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .project-aside {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .aside-block {
+        flex: 1 1 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">JI</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <section class="project-detail-hero">
+    <div class="section-inner">
+      <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+      <p class="section-label">Project</p>
+      <h1>Project Title</h1>
+      <div class="project-hero-meta">
+        <!-- Copy project-tag spans from the main page -->
+        <span class="project-tag">HTML</span>
+        <span class="project-tag">CSS</span>
+        <span class="project-tag">JavaScript</span>
+      </div>
+
+      <!-- Screenshots — add or remove .screenshot-slot divs as needed -->
+      <!-- For two side-by-side images add class="project-screenshots two-col" -->
+      <div class="project-screenshots">
+        <div class="screenshot-slot">
+          <!-- Replace with: <img src="../assets/your-screenshot.png" alt="Description" /> -->
+          <span class="screenshot-slot-label">Main Screenshot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="section-inner">
+      <div class="project-content-grid">
+
+        <div class="project-body">
+          <p class="section-label">About</p>
+          <!--
+            Write 2-4 paragraphs describing:
+            - What the project is and why you built it
+            - Who it's for / the problem it solves
+            - Any notable features or challenges
+          -->
+          <p>Describe what this project is, what problem it solves, and why you built it. Keep it honest and personal — this is your story.</p>
+          <p>You can mention any interesting challenges you ran into during development or features you're proud of.</p>
+        </div>
+
+        <aside class="project-aside">
+          <div class="aside-block">
+            <p class="aside-block-label">Tech Stack</p>
+            <ul class="tech-list">
+              <!-- Add one <li> per technology used -->
+              <li>HTML / CSS</li>
+              <li>JavaScript</li>
+              <li>Node.js</li>
+            </ul>
+          </div>
+
+          <div class="aside-block">
+            <p class="aside-block-label">Year</p>
+            <span style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--accent);">2025</span>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="retro-section">
+    <div class="section-inner">
+      <p class="section-label">Retrospective</p>
+      <h2 class="section-title">What I'd Do Differently</h2>
+      <div class="retro-body">
+        <!--
+          Write honestly about:
+          - Decisions you'd make differently
+          - Things you learned that would've changed your approach
+          - Known bugs or improvements still on the list
+        -->
+        <p>Looking back, write what you'd approach differently if you started over. Be specific — vague regrets aren't interesting, real lessons are.</p>
+        <p>If there are known bugs or improvements you plan to fix, list them here.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>© 2025 Justin Ildefonso</p>
+    <p class="footer-muted">Built with HTML, CSS &amp; JS</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.section-inner, .retro-body').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

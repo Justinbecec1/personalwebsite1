@@ -83,6 +83,23 @@ nav.scrolled {
   color: var(--accent);
 }
 
+.nav-github {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  margin-left: 1.2rem;
+}
+
+.nav-github:hover {
+  color: var(--accent);
+}
+
+.nav-github svg {
+  width: 20px;
+  height: 20px;
+}
+
 
 section {
   padding: 7rem 5rem;
@@ -362,13 +379,41 @@ section {
   padding: 0.2rem 0.6rem;
 }
 
-.project-card-cta {
+.project-card-footer {
   margin-top: auto;
   padding-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-card-cta {
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.project-card-cta:hover {
+  opacity: 0.75;
+}
+
+.project-github-link {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.project-github-link:hover {
+  color: var(--accent);
+}
+
+.project-github-link svg {
+  width: 18px;
+  height: 18px;
 }
 
 

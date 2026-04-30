@@ -327,6 +327,21 @@ section {
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  position: relative;
+}
+
+.project-live-badge {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4ade80;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid #4ade80;
+  padding: 0.2rem 0.55rem;
+  backdrop-filter: blur(4px);
 }
 
 .project-card-img img {
@@ -398,6 +413,25 @@ section {
 
 .project-card-cta:hover {
   opacity: 0.75;
+}
+
+.project-card-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-live-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4ade80;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.project-live-link:hover {
+  opacity: 0.7;
 }
 
 .project-github-link {
